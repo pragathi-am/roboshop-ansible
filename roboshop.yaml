@@ -9,7 +9,7 @@
     ami_id: "ami-0220d79f3f480ecf5"
     envir:  dev
     instances:
-    - mangodb
+    - mongodb
     - catalogue
   tasks:  
   - name:  create ec2 instance
