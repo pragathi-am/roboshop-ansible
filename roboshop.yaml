@@ -1,5 +1,6 @@
 # eg if you dont want to user inventory.ini then you can mention in playbook like 
 # hosts: all and connection: local
+# ansible-playbook -i localhost, roboshop.yaml
 - name: create ec2 and R53 records
   hosts: all
   connection: local
@@ -24,8 +25,8 @@
         Environment: "{{ envir }}"
         Name: "{{ item }}-{{ envir }}"
     loop: "{{ instances }}"
-    register: ec2-output
+    register: ec2_output
   
   - name: print ec2-output
     ansible.builtin.debug:  
-      msg: " {{ ec2-output }}  "
+      msg: " {{ ec2_output }}  "
