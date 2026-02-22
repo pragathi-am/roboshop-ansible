@@ -41,7 +41,7 @@
     ttl: 1
     value: "{{ item.instances[0].private_ip_address }}"
     wait: true
-  loop: {{ ec2-output.results }}  # need to search in this list
+  loop: "{{ ec2-output.results }}"  # need to search in this list
 
 - name: Create R53 record for instance
   amazon.aws.route53:
@@ -52,5 +52,5 @@
     ttl: 1
     value: "{{ item.instances[0].public_ip_address }}"
     wait: true    
-  loop: {{ ec2-output.results }}  # need to search in this list  
+  loop: "{{ ec2-output.results }}"  # need to search in this list  
   when: item.item == "frontend"
