@@ -2,10 +2,10 @@
   hosts: all
   connection: local
   vars:
-    sg_id: "sg-00d129afc92780fa5"
-    ami_id: "ami-0220d79f3f480ecf5"
+    sg_id: sg-00d129afc92780fa5
+    ami_id: ami-0220d79f3f480ecf5
     envir:  dev
-    domain_name: "daws88sraga.online"
+    domain_name: daws88sraga.online
     instances:
     - mongodb
     - catalogue
@@ -33,7 +33,7 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}" #daws88sraga.online"
-      record: "{{ item.item }}-{{ envir }}-{{ domain_name }}"   #mongodb-dev.daws88sraga.online #frontend-dev.daws88sraga.online
+      record: "{{ item.item }}-{{ envir }}.{{ domain_name }}"   #mongodb-dev.daws88sraga.online #frontend-dev.daws88sraga.online
       type: A
       ttl: 1
       value: "{{ item.instances[0].private_ip_address }}"
@@ -44,7 +44,7 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}" #daws88sraga.online"
-      record: "roboshop-{{ envir }}-{{ domain_name }}"   #roboshop-dev.daws88sraga.online
+      record: "roboshop-{{ envir }}.{{ domain_name }}"   #roboshop-dev.daws88sraga.online
       type: A
       ttl: 1
       value: "{{ item.instances[0].public_ip_address }}"
