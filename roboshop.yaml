@@ -1,6 +1,3 @@
-# eg if you dont want to user inventory.ini then you can mention in playbook like 
-# hosts: all and connection: local
-# ansible-playbook -i localhost, roboshop.yaml
 - name: create ec2 and R53 records
   hosts: all
   connection: local
