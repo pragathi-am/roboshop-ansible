@@ -29,9 +29,6 @@
     ansible.builtin.debug:  
       msg: "{{ ec2_output }}"
 
-# we generally give public ip for frontend record due to security. but here, since we are connecting thru
-# ansible, we can give private ip also give value as : frontend-dev.daws88sraga.online. 
-# for public ip we give as : roboshop-dev.daws88sraga.online
 - name: Create R53 record for instance
   amazon.aws.route53:
     state: present
